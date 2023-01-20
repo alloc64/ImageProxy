@@ -36,10 +36,4 @@ public class DefaultControllerAdvice {
         return ResponseEntity.status(ex.getStatus())
                 .body(ex.getReason());
     }
-
-    @ExceptionHandler({Exception.class})
-    public final ResponseEntity<String> handle(Exception ex, WebRequest request) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ex.getMessage());
-    }
 }
