@@ -1,0 +1,18 @@
+version: '3.9'
+x-common-variables: &default-env
+  image.proxy.bucket.region: europe-central2
+  image.proxy.s3.endpoint: https://storage.googleapis.com
+  image.proxy.s3.accesskey: your access key
+  image.proxy.s3.secretkey: secret
+
+services:
+  image-proxy:
+    container_name: "image-proxy"
+    build:
+      context: .
+      dockerfile: ./image-proxy-api/Dockerfile
+    restart: always
+    environment:
+      *default-env
+    ports:
+      - "8080:8080"
